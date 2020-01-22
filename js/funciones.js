@@ -38,16 +38,16 @@ function agregarDatos(){
 				$('#formAgregarDatos')[0].reset();
 				mostrarDatos();
 				Swal.fire(
-				  'Éxito!',
-				  'El registro fue agregado.',
-				  'success'
-				);
+					'Éxito!',
+					'El registro fue agregado.',
+					'success'
+					);
 			} else{
 				Swal.fire(
-				  'Error',
-				  'El registro no fue agregado.',
-				  'error'
-				);
+					'Error',
+					'El registro no fue agregado.',
+					'error'
+					);
 			}
 		}
 	});
@@ -100,16 +100,16 @@ function actualizarDatos(){
 				//$('#formAgregarDatos')[0].reset();
 				mostrarDatos();
 				Swal.fire(
-				  'Éxito!',
-				  'El registro fue actualizado.',
-				  'success'
-				);
+					'Éxito!',
+					'El registro fue actualizado.',
+					'success'
+					);
 			} else{
 				Swal.fire(
-				  'Error',
-				  'El registro no fue actualizado.',
-				  'error'
-				);
+					'Error',
+					'El registro no fue actualizado.',
+					'error'
+					);
 			}
 		}
 	});
@@ -134,18 +134,37 @@ function eliminarDatos(id){
 		reverseButtons: true
 	}).then((result) => {
 		if (result.value) {
-			swalWithBootstrapButtons.fire(
-				'Deleted!',
-				'Your file has been deleted.',
-				'success'
-				)
+			$.ajax({
+				type: "POST",
+				data: "id="+id,
+				url: "php/eliminar.php",
+				success: function(r){
+					if(r==1){
+						mostrarDatos();
+						swalWithBootstrapButtons.fire(
+							'Eliminado',
+							'El registro fue eliminado de la base de datos',
+							'success'
+							);
+					} else {
+						swalWithBootstrapButtons.fire(
+							'Error',
+							'Por algún motivo no se pudo eliminar',
+							'error'
+							)
+
+					}
+					
+				}
+			});
+			
 		} else if (
 			/* Read more about handling dismissals below */
 			result.dismiss === Swal.DismissReason.cancel
 			) {
 			swalWithBootstrapButtons.fire(
-				'Cancelled',
-				'Your imaginary file is safe :)',
+				'Cancelado',
+				'El registro no fue eliminado',
 				'error'
 				)
 		}
