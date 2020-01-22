@@ -53,6 +53,23 @@ function agregarDatos(){
 	});
 }
 
+function agregarDatosParaEdicion(id){
+
+	$.ajax({
+		type: "POST",
+		data: "id="+id,
+		url: "php/datosUpdate.php",
+		success: function(r){
+			datos=jQuery.parseJSON(r);
+			$('#id_a').val(datos['ID']);
+			$('#nombre_a').val(datos['NOMBRE']);
+			$('#paterno_a').val(datos['PATERNO']);
+			$('#materno_a').val(datos['MATERNO']);
+			$('#telefono_a').val(datos['TELEFONO']);
+		}
+	});
+}
+
 function eliminarDatos(id){
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {

@@ -103,14 +103,15 @@
 	      </div>
 	      <div class="modal-body">
 	        <form id="formActualizarDatos">
+	        	<input type="text" id="id_a" name="id_a" hidden="">
 	      		<label>Nombre</label>
-		        <input type="text" name="nombre_a" class="form-control form-control-sm">
+		        <input type="text" id="nombre_a" name="nombre_a" class="form-control form-control-sm">
 		        <label>Apellido paterno</label>
-		        <input type="text" name="paterno_a" class="form-control form-control-sm">
+		        <input type="text" id="paterno_a" name="paterno_a" class="form-control form-control-sm">
 		        <label>Apellido materno</label>
-		        <input type="text" name="materno_a" class="form-control form-control-sm">
+		        <input type="text" id="materno_a" name="materno_a" class="form-control form-control-sm">
 		        <label>Teléfono</label>
-		        <input type="text" name="telefono_a" class="form-control form-control-sm">
+		        <input type="text" id="telefono_a" name="telefono_a" class="form-control form-control-sm">
 	      	</form>
 	      </div>
 	      <div class="modal-footer">

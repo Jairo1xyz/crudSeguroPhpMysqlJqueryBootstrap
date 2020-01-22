@@ -15,7 +15,7 @@ while ($datos=$result->fetch_assoc()) {
 				."<td>".$datos["PATERNO"]."</td>"
 				."<td>".$datos["MATERNO"]."</td>"
 				."<td>".$datos["TELEFONO"]."</td>"
-				."<td>"."<center><span class='btn btn-warning btn-sm' data-toggle='modal' data-target='#modalActualizar'><i class='fas fa-edit'></i></span></center>"."</td>"
+				."<td>"."<center><span class='btn btn-warning btn-sm' data-toggle='modal' data-target='#modalActualizar' onclick='agregarDatosParaEdicion(".$datos["ID"].")'><i class='fas fa-edit'></i></span></center>"."</td>"
 				."<td>"."<center><span class='btn btn-danger btn-sm' onclick='eliminarDatos(".$datos["ID"].")'><i class='fas fa-trash-alt'></i></span></center>"."</td>"
 			."</tr>";
 }
