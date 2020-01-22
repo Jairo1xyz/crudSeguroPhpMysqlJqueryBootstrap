@@ -70,6 +70,51 @@ function agregarDatosParaEdicion(id){
 	});
 }
 
+function actualizarDatos(){
+	if($('#nombre_a').val().trim()==""){
+		Swal.fire('Debes agregar un nombre!');
+		return false;
+	}
+
+	if($('#paterno_a').val().trim()==""){
+		Swal.fire('Debes agregar un apellido paterno!');
+		return false;
+	}
+
+	if($('#materno_a').val().trim()==""){
+		Swal.fire('Debes agregar un apellido materno!');
+		return false;
+	}
+
+	if($('#telefono_a').val().trim()==""){
+		Swal.fire('Debes agregar un telefono!');
+		return false;
+	}
+
+	$.ajax({
+		type: "POST",
+		data: $('#formActualizarDatos').serialize(),
+		url: "php/actualizarDatos.php",
+		success: function(r){
+			if(r==1){
+				//$('#formAgregarDatos')[0].reset();
+				mostrarDatos();
+				Swal.fire(
+				  'Éxito!',
+				  'El registro fue actualizado.',
+				  'success'
+				);
+			} else{
+				Swal.fire(
+				  'Error',
+				  'El registro no fue actualizado.',
+				  'error'
+				);
+			}
+		}
+	});
+}
+
 function eliminarDatos(id){
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
